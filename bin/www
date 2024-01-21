@@ -1,27 +1,19 @@
 #!/usr/bin/env node
 
-/**
- * Module dependencies.
- */
-
 const app = require('../app');
-const debug = require('debug')('event-router:server');
 const http = require('http');
-
-/**
- * Get port from environment and store in Express.
- */
+const config = require("../providers/config");
+const {validateConfig} = require("../utils/config");
 
 const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
-
 async function init() {
+    validateConfig(config)
     initServer()
 }
 
 init()
-
 
 function initServer() {
     const server = http.createServer(app);
@@ -76,6 +68,6 @@ function onListening(server) {
         const bind = typeof addr === 'string'
             ? 'pipe ' + addr
             : 'port ' + addr.port;
-        debug('Listening on ' + bind);
+        console.log('Listening on ' + bind);
     }
 }
