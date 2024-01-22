@@ -1,5 +1,6 @@
 const { validationHandler } = require('../../../../utils/handler');
 const { body } = require('express-validator');
+const {config} = require("../../../../providers");
 
 const payloadValidation = body('payload').isObject().exists();
 const possibleDestinationsValidation = body('possibleDestinations')
@@ -24,7 +25,7 @@ const possibleDestinationsValidation = body('possibleDestinations')
         return true;
     })
     .exists();
-const strategyValidation = body('strategy').isString().exists();
+const strategyValidation = body('strategy').default(config.get("defaultStrategy")).isString();
 
 const eventRouteValidation = [payloadValidation, possibleDestinationsValidation, strategyValidation];
 

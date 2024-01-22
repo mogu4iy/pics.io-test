@@ -1,9 +1,10 @@
 const { HttpPutTransport, HttpPostTransport, ConsoleWarnTransport, ConsoleLogTransport } = require('../../transports');
 const { ajv } = require('../../providers');
+const constants = require('../../constants');
 
 const configSchema = {
     type: 'object',
-    required: ['routes', 'user'],
+    required: ['routes', 'user', 'defaultStrategy'],
     properties: {
         user: {
             type: 'object',
@@ -37,6 +38,10 @@ const configSchema = {
                     ConsoleLogTransport.configValidationSchema,
                 ],
             },
+        },
+        defaultStrategy: {
+            type: 'string',
+            enum: Object.values(constants.strategy),
         },
     },
 };

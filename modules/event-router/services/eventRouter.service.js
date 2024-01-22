@@ -10,7 +10,6 @@ function route({ strategy, possibleDestinations, payload }) {
             if (!destinationConfig) {
                 throw new Error(`Destination (${d}) config is not resolved`);
             }
-            // TODO: check if config exists
             const resolvedTransport = resolveTransport(destinationConfig.transport);
             resolvedTransport.route(payload, destinationConfig);
         }
