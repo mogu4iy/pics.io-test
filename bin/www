@@ -1,19 +1,31 @@
 #!/usr/bin/env node
 
-const app = require('../app');
+const process = require("node:process");
 const http = require('http');
 const config = require("../providers/config");
 const {validateConfig} = require("../utils/config");
+const mongoose = require("mongoose");
+const dotenv = require('dotenv')
+const app = require('../app');
+
+dotenv.config()
 
 const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 async function init() {
     validateConfig(config)
+    await initDB()
     initServer()
 }
 
 init()
+
+async function initDB() {
+    const URI = `mongodb://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_HOST}:${process.env.MONGODB_PORT}/${process.env.MONGODB_DB}`
+    console.log(URI)
+    await mongoose.connect(URI);
+}
 
 function initServer() {
     const server = http.createServer(app);
