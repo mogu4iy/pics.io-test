@@ -1,5 +1,5 @@
-const authGuard = require("./auth.guard")
+const authGuard = require('./auth.guard');
 
 module.exports = {
-    authGuard
-}
+    authGuard,
+};

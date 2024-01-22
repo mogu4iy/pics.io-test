@@ -1,21 +1,23 @@
-const {HttpTransport} = require("../utils/event-router/transports");
-const constants = require("../constants");
-const axios = require("axios");
+const { HttpTransport } = require('../utils/event-router/transports');
+const constants = require('../constants');
+const axios = require('axios');
+const { logger } = require('../providers');
 
 class HttpPostTransport extends HttpTransport {
     async route(payload, meta) {
-        axios.post(meta.url, payload)
-            .then(() => {
-                // TODO: log result
+        axios
+            .post(meta.url, payload)
+            .then(data => {
+                logger.info(`HttpPostTransport: ${data.statusText}`);
             })
-            .catch(() => {
-                // TODO: log error
-            })
+            .catch(err => {
+                logger.error(`HttpPostTransport: ${err.message}`);
+            });
     }
 
     constructor() {
-        super({key: constants.transports.httpPut});
+        super({ key: constants.transports.httpPut });
     }
 }
 
-module.exports = new HttpPostTransport()
+module.exports = new HttpPostTransport();

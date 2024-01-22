@@ -1,5 +1,5 @@
-const eventRouterService = require("./eventRouter.service")
+const eventRouterService = require('./eventRouter.service');
 
 module.exports = {
-    eventRouterService
-}
+    eventRouterService,
+};

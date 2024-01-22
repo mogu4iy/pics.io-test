@@ -1,2 +1,2 @@
-const Ajv = require("ajv")
-module.exports = new Ajv()
+const Ajv = require('ajv');
+module.exports = new Ajv();

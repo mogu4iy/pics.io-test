@@ -1,43 +1,45 @@
-const {HttpPutTransport, HttpPostTransport, ConsoleWarnTransport, ConsoleLogTransport} = require("../../transports");
-const {ajv} = require("../../providers");
+const { HttpPutTransport, HttpPostTransport, ConsoleWarnTransport, ConsoleLogTransport } = require('../../transports');
+const { ajv } = require('../../providers');
 
 const configSchema = {
-    type: "object",
-    required: ["routes", "user"],
+    type: 'object',
+    required: ['routes', 'user'],
     properties: {
         user: {
-            type: "object",
+            type: 'object',
             properties: {
                 passwordSaltRounds: {
-                    type: "number"
-                }
+                    type: 'number',
+                },
             },
-            required: ["passwordSaltRounds"]
+            required: ['passwordSaltRounds'],
         },
         routes: {
-            type: "object",
+            type: 'object',
             patternProperties: {
-                "^.+$": {
-                    type: "object",
+                '^.+$': {
+                    type: 'object',
                     anyOf: [
                         HttpPostTransport.configValidationSchema,
                         HttpPutTransport.configValidationSchema,
                         ConsoleWarnTransport.configValidationSchema,
-                        ConsoleLogTransport.configValidationSchema
-                    ]
+                        ConsoleLogTransport.configValidationSchema,
+                    ],
                 },
-            }
+            },
         },
-    }
-}
+    },
+};
 
 function validateConfig(data) {
-    const validate = ajv.compile(configSchema)
-    if (!validate(data)){
-        throw new Error(`Config is not validated:\n ${validate.errors.map(err => JSON.stringify(err, null, 2)).join("\n")}`)
+    const validate = ajv.compile(configSchema);
+    if (!validate(data)) {
+        throw new Error(
+            `Config is not validated:\n ${validate.errors.map(err => JSON.stringify(err, null, 2)).join('\n')}`,
+        );
     }
 }
 
 module.exports = {
-    validateConfig
-}
+    validateConfig,
+};
