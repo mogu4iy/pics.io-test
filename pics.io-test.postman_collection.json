@@ -1,0 +1,137 @@
+{
+	"info": {
+		"_postman_id": "8b6df63a-280d-46b8-b308-9c3639fea4b6",
+		"name": "pics.io-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13141264"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"bohdan2\",\r\n    \"password\": \"password2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"bohdan2\",\r\n    \"password\": \"password2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/register",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "event-router",
+			"item": [
+				{
+					"name": "Route",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1YWU2NDU5M2M1NzczYzY4NGE3N2IzZCIsImlhdCI6MTcwNTkzMTI3MywiZXhwIjoxNzA1OTM0ODczfQ.VsVIasZ0SohJUvbDL9ivYqQ3yEqahVpf-R_tBy-NPhT0nBa5O1OH94K5eloGIUwGBYiJ2Pcar-y-m10JGk54rC3c5uc6t9vHKPjzf4k4lDxgI6YomHK42lEcXBKu5vGvcm0IDSakci3SJBFflfNItNwIwKgEvTy6HjwUd-unSTNVhpDD1He9qY4Cp0nwgDEEqRJrEiutVx0DOH4qK5B-dJJO69VrOmHiM0IdjN4tfcKRvc9nhBG7F5cYLYMA5B4Z3lYNyzINcdlU6FHad2y0aVYeMsIE57oCxb2z_bSyWQUoppuXWyiLmnAnYi7BsbXwwyL1_-v9wWAm3nB11GmtqFDS4ojvHoazePf7Z6ZX20FeXMIXHdHAfuxNJvLSDYTwH1YPMMjkDi4E7QaPg-Swu_1fSV9weCyUHQSi8X_aPxEehSWz3uhRVAw1gtqHMWkqXoBR1Zmt7Qj1yXjFXCOE0_D7rYa-_tRxTOkk5lYmJxM5Dwuz1Atc6tLmNEfG8a8ImKGI6cS999pGdM729xVaY37mpSnVU63n-zSryRMo6VwdwgVTxs41hQyj2k5D0x9K-_y_44eyeNYjuqJn1BCh-0cfj7KEiXYjgB7rr9tkUzgHUCOadTHPHd5modncg-g9Y4g4HeMi9igNdbcETodeRXGql4Jk82p07ao-FF_tz7A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payload\": { \"a\":1, \"b\":2, \"c\":3}, \r\n\t\"possibleDestinations\": [\r\n\t\t{\r\n\t\t\t\"destination1\": true,\r\n\t\t\t\"destination2\": false,\r\n\t\t\t\"destination3\": true,\r\n            \"destination5\": true\r\n\t\t}, \r\n\t\t{\r\n\t\t\t\"destination1\": true,\r\n\t\t\t\"destination2\": false,\r\n\t\t\t\"destination4\": true\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"destination3\": true\r\n\t\t}\r\n\t],\r\n\t\"strategy\": \"ALL\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/route-event",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"route-event"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://127.0.0.1:5000",
+			"type": "string"
+		}
+	]
+}
