@@ -5,9 +5,8 @@
       "url": "https://example.com/destination1"
     },
     "destination2": {
-      "transport" : "http.post",
-      "url": "https://example2.com/destination2",
-      "lalaa": "sdadsad"
+      "transport" : "http.put",
+      "url": "https://example2.com/destination2"
     },
     "destination3": {
       "transport" : "console.log"

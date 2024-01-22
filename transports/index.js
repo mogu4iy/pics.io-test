@@ -13,7 +13,7 @@ function resolveTransport(transport){
         case constants.transports.httpPut:
             return HttpPutTransport
         case constants.transports.httpPost:
-            return constants.transports.httpPost
+            return HttpPostTransport
         default:
             throw new Error(`Transport '${transport}' is not supported`)
     }

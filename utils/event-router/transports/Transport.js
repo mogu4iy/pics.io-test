@@ -18,6 +18,9 @@ class Transport {
         configValidationProperties: {},
         configValidationRequired: []
     }) {
+        if (!key) {
+            throw new Error("Transport key can not be nullable")
+        }
         this._key = key
         this.configValidationSchema.properties = {
             ...this.configValidationSchema.properties,
