@@ -1,12 +1,15 @@
 const { resolveTransport } = require('../../../transports');
 const { resolveDestinations } = require('../../../utils/event-router');
-const { config } = require('../../../providers');
+const {destinationTransports} = require("../../../constants");
 
 function route({ strategy, possibleDestinations, payload }) {
     const resolvedDestinations = resolveDestinations(possibleDestinations, strategy);
     for (const d in resolvedDestinations) {
         if (resolvedDestinations[d]) {
-            const destinationConfig = config.get(`routes.${d}`);
+            const destinationConfig = destinationTransports[d]
+            if (!destinationConfig){
+                throw new Error(`Destination (${d}) config is not resolved`)
+            }
             // TODO: check if config exists
             const resolvedTransport = resolveTransport(destinationConfig.transport);
             resolvedTransport.route(payload, destinationConfig);

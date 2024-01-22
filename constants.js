@@ -12,10 +12,12 @@ const strategy = {
     all: 'ALL',
 };
 
-const destinations = Object.keys(config.get('routes'));
+const destinations = Object.values(config.get('routes')).map(v => v["name"])
+const destinationTransports = Object.fromEntries(Object.values(config.get('routes')).map(v => [v["name"], v]))
 
 module.exports = {
     transports,
     strategy,
     destinations,
+    destinationTransports
 };

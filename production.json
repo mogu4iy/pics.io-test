@@ -1,18 +1,22 @@
 {
-  "routes": {
-    "destination1": {
-      "transport" : "http.post",
+  "routes": [
+    {
+      "name": "destination1",
+      "transport": "http.post",
       "url": "https://example.com/destination1"
     },
-    "destination2": {
-      "transport" : "http.post",
+    {
+      "name": "destination2",
+      "transport": "http.put",
       "url": "https://example2.com/destination2"
     },
-    "destination3": {
-      "transport" : "console.log"
+    {
+      "name": "destination3",
+      "transport": "console.log"
     },
-    "destination4": {
-      "transport" : "console.warn"
+    {
+      "name": "destination4",
+      "transport": "console.warn"
     }
-  }
+  ]
 }

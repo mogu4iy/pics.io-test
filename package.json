@@ -29,7 +29,8 @@
     "mongodb": "^6.3.0",
     "mongoose": "^8.1.0",
     "morgan": "~1.9.1",
-    "pino": "^8.17.2"
+    "pino": "^8.17.2",
+    "pino-http": "^9.0.0"
   },
   "devDependencies": {
     "eslint": "^8.56.0",

@@ -15,7 +15,7 @@ function resolveTransport(transport) {
         case constants.transports.httpPost:
             return HttpPostTransport;
         default:
-            throw new Error(`Transport '${transport}' is not supported`);
+            throw new Error(`Transport (${transport}) is not supported`);
     }
 }
 

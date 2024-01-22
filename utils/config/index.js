@@ -11,22 +11,32 @@ const configSchema = {
                 passwordSaltRounds: {
                     type: 'number',
                 },
-            },
-            required: ['passwordSaltRounds'],
-        },
-        routes: {
-            type: 'object',
-            patternProperties: {
-                '^.+$': {
-                    type: 'object',
-                    anyOf: [
-                        HttpPostTransport.configValidationSchema,
-                        HttpPutTransport.configValidationSchema,
-                        ConsoleWarnTransport.configValidationSchema,
-                        ConsoleLogTransport.configValidationSchema,
-                    ],
+                jwtPrivateKey: {
+                    type: 'string',
+                },
+                jwtPublicKey: {
+                    type: 'string',
+                },
+                jwtAlgorithm: {
+                    type: 'string',
+                },
+                jwtExpiresIn: {
+                    type: 'number',
                 },
             },
+            required: ['passwordSaltRounds', 'jwtPrivateKey', 'jwtPublicKey', 'jwtAlgorithm', 'jwtExpiresIn'],
+        },
+        routes: {
+            type: 'array',
+            items: {
+                type: 'object',
+                anyOf: [
+                    HttpPostTransport.configValidationSchema,
+                    HttpPutTransport.configValidationSchema,
+                    ConsoleWarnTransport.configValidationSchema,
+                    ConsoleLogTransport.configValidationSchema,
+                ],
+            }
         },
     },
 };

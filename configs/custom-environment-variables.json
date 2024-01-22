@@ -1,0 +1,9 @@
+{
+  "user": {
+    "passwordSaltRounds": "PASSWORD_SALT_ROUNDS",
+    "jwtPrivateKey": "JWT_PRIVATE_KEY",
+    "jwtPublicKey": "JWT_PUBLIC_KEY",
+    "jwtAlgorithm": "JWT_ALGORITHM",
+    "jwtExpiresIn": "JWT_EXPIRES_IN"
+  }
+}

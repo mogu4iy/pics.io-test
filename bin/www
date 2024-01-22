@@ -5,8 +5,7 @@ const http = require('http');
 const mongoose = require("mongoose");
 const dotenv = require('dotenv')
 
-const {logger} = require("../providers");
-const config = require("../providers");
+const {logger, config} = require("../providers");
 const {validateConfig} = require("../utils/config");
 const app = require('../app');
 
@@ -63,11 +62,11 @@ function onError(error) {
     // handle specific listen errors with friendly messages
     switch (error.code) {
         case 'EACCES':
-            logger.error(bind + ' requires elevated privileges');
+            console.error(bind + ' requires elevated privileges');
             process.exit(1);
             break;
         case 'EADDRINUSE':
-            logger.error(bind + ' is already in use');
+            console.error(bind + ' is already in use');
             process.exit(1);
             break;
         default:
