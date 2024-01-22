@@ -7,7 +7,7 @@ class Transport {
     configValidationSchema = {
         type: 'object',
         properties: {
-            name: {type: 'string'},
+            name: { type: 'string' },
             transport: { type: 'string' },
         },
         required: ['transport', 'name'],

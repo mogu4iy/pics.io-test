@@ -36,7 +36,7 @@ const configSchema = {
                     ConsoleWarnTransport.configValidationSchema,
                     ConsoleLogTransport.configValidationSchema,
                 ],
-            }
+            },
         },
     },
 };

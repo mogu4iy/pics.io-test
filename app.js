@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const logger = require('pino-http')
+const logger = require('pino-http');
 
 const { errorHandler } = require('./utils/handler');
 const { ErrorNotFound } = require('./utils/errors');
