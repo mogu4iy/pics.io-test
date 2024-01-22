@@ -176,7 +176,7 @@ Examples
   Request
    ```
    {
-      "payload": { "a":1, "b":2, "c":3}, 
+      "payload": any, 
       "possibleDestinations": [
          {
             "destination1": true,
