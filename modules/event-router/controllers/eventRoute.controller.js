@@ -1,17 +1,12 @@
 const eventRouterService = require("../services/eventRouter.service");
+const {httpHandler} = require("../../../utils/handler");
 
-function eventRouteController(req, res) {
-    try {
-        const resolvedDestinations = eventRouterService.route({
-            strategy: req.body.strategy,
-            possibleDestinations: req.body.possibleDestinations,
-            payload: req.body.payload
-        })
-        return res.send(resolvedDestinations)
-    } catch (e) {
-        console.log(e)
-        // TODO: log error
-    }
+async function eventRouteController(req) {
+    return eventRouterService.route({
+        strategy: req.body.strategy,
+        possibleDestinations: req.body.possibleDestinations,
+        payload: req.body.payload
+    })
 }
 
-module.exports = eventRouteController
+module.exports = httpHandler(eventRouteController)

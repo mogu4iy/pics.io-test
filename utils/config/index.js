@@ -3,8 +3,17 @@ const {ajv} = require("../../providers");
 
 const configSchema = {
     type: "object",
-    required: ["routes"],
+    required: ["routes", "user"],
     properties: {
+        user: {
+            type: "object",
+            properties: {
+                passwordSaltRounds: {
+                    type: "number"
+                }
+            },
+            required: ["passwordSaltRounds"]
+        },
         routes: {
             type: "object",
             patternProperties: {
